@@ -62,14 +62,25 @@ export default function Weather() {
     }
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      search(inputRef.current.value);
+    }
+  };
+
   useEffect(() => {
-    search("Landon");
+    search("London");
   }, []);
 
   return (
     <div className={styles.weather}>
       <div className={styles.searchBar}>
-        <input ref={inputRef} type="text" placeholder="Search" />
+        <input
+          ref={inputRef}
+          type="text"
+          placeholder="Search"
+          onKeyDown={handleKeyDown}
+        />
         <img
           src={Search_icon}
           alt="Search"
